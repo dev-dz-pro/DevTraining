@@ -10,7 +10,7 @@ def get_pull_requests():
     pull_requests = []
     for repo in g.get_user().get_repos():  # if repo.name == "DevTraining":
         pulls = repo.get_pulls(state='open', base='master')
-        for i, pr in enumerate(pulls, start=1):
+        for pr in pulls:
             htmll = html.Li([
                         html.Div([
                             html.Label(i, className="task_type", style={"width": "20px"}),
@@ -23,4 +23,5 @@ def get_pull_requests():
                         ], className="taskticket", style={"height": "35px"})
                     ])
             pull_requests.append(htmll)
-    return pull_requests, i
+            
+    return pull_requests, len(pull_requests)

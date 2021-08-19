@@ -3,7 +3,7 @@ import dash_html_components as html
 import os
 
 
-jiraOptions = {'server': "https://ayoub02.atlassian.net"}
+jiraOptions = {'server': "https://ayoub02.atlassian.net"}  #comment
 jira = JIRA(options=jiraOptions, basic_auth=(os.environ["jira_email"], os.environ["jira_token"]))
 
 

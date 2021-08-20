@@ -5,7 +5,7 @@ import os
 # First create a Github instance using an access token
 g = Github(os.environ["github_token"]) 
 
-# Then play with your Github objects
+# Function thats return a list of puul requests as a tempates
 def get_pull_requests():
     pull_requests = []
     for repo in g.get_user().get_repos():  # if repo.name == "DevTraining":

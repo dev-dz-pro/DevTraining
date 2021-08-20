@@ -8,7 +8,7 @@ g = Github(os.environ["github_token"])
 # Then play with your Github objects
 def get_pull_requests():
     pull_requests = []
-    for repo in g.get_user().get_repos():  # if repo.name == "DevTraining":
+    for repo in g.get_user().get_repos():  # add this condition for getting pull requests of only one repositery (if repo.name == "DevTraining":)
         pulls = repo.get_pulls(state='open', base='master')
         for i, pr in enumerate(pulls, start=1):
             htmll = html.Li([

@@ -16,7 +16,7 @@ def get_jira_data():
     sprints = set()
     issues = []
 
-    # GETTING iSSUES
+    # GETTING JIRA iSSUES
     for singleIssue in jira.search_issues(jql_str='project=VIFBOX-Project'):
         issue_type = singleIssue.fields.issuetype.name # iSSUE Type
         story_points = singleIssue.fields.customfield_10016 # Story point

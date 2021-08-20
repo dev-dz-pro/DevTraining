@@ -5,16 +5,18 @@ from  JiraInfo import *
 from GithubInfo import *
 import flask
 
-server = flask.Flask(__name__)
-app = dash.Dash(server=server)
+server = flask.Flask(__name__) # set flask server for production
+app = dash.Dash(server=server)  # dash app
 
 def serve_layout():
 
+    # getting jira and pull requests info
     issues, (num_issues, pointes, num_tasks, num_sprints) = get_jira_data()
     pullrequests, num_puuls = get_pull_requests()
     data = {"Number of issues": num_issues, "Total Story points": pointes, "Number of tasks": num_tasks, "Number of sprints": num_sprints, "Pull Requests": num_puuls}
     html1, html2, html3, html4, html5 = [html.Div([html.H3(v), html.P(k)], className="single_list_counter") for k, v in data.items()]
 
+    # setting up our templqtes Body
     return html.Div([
                     html.Div([
                         html.Div([
@@ -41,10 +43,10 @@ def serve_layout():
                             html1, html2, html3, html4, html5,
                             html.Div([
                                 dcc.Graph(figure = {
-                                        "data": [{"labels": ["issues", "Pointes", "tasks", "sprints", "requests"],  # , "pull requests"
+                                        "data": [{"labels": ["issues", "Pointes", "tasks", "sprints", "requests"],
                                                 "values": [num_issues, pointes, num_tasks, num_sprints, num_puuls], "type": "pie", "hole": .3}],
                                         "layout": { "title": "<b>JIRA Info</b>" } } )], id="pie-chart"),
-                        ], id="tickets", style={"margin-top": "85px"})] # 50 H1height + 25 textheight + 10  padding
+                        ], id="tickets", style={"margin-top": "85px"})] 
                     , id="container")
 
             ], id='mydash')

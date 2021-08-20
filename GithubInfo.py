@@ -23,4 +23,5 @@ def get_pull_requests():
                         ], className="taskticket", style={"height": "35px"})
                     ])
             pull_requests.append(htmll)
-    return pull_requests, i
+            
+    return pull_requests, len(pull_requests)
